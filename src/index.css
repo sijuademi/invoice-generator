@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+@import "tailwindcss";
+
+/* Enable class-based dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+	/* Brand Colors */
+	--color-brand-purple: #7c5dfa;
+	--color-brand-purple-light: #9277ff;
+	--color-brand-red: #ec5757;
+	--color-brand-red-light: #ff9797;
+	--color-brand-sidebar: #373b53;
+
+	/* Status Colors */
+	--color-status-paid: #33d69f;
+	--color-status-pending: #ff8f00;
+	--color-status-draft: #373b53;
+
+	/* Light Mode - Default */
+	--color-light-bg: #f8f8fb;
+	--color-light-surface: #ffffff;
+	--color-light-surface-alt: #f9fafe;
+	--color-light-border: #dfe3fa;
+	--color-light-heading: #0c0e16;
+	--color-light-body: #888eb0;
+	--color-light-label: #7e88c3;
+	--color-light-muted: #dfe3fa;
+
+	/* Typography */
+	--font-brand: "League Spartan", ui-sans-serif, system-ui, sans-serif;
+	--font-sans: "Roboto", "Helvetica Neue", sans-serif;
+
+	--shadow-card: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
+
+	/* ── Radius ── */
+	--radius-invoice: 8px;
+	--radius-badge: 6px;
+	--radius-pill: 24px;
+}
+
+/* Dark Mode Overrides */
+.dark {
+	--color-light-bg: #141625;
+	--color-light-surface: #1e2139;
+	--color-brand-sidebar: #1e2139;
+	--color-light-surface-alt: #252945;
+	--color-light-border: #252945;
+	--color-light-heading: #ffffff;
+	--color-light-body: #dfe3fa;
+	--color-light-label: #888eb0;
+	--color-light-muted: #494e6e;
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar {
+	width: 6px;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: var(--border-col);
+	border-radius: 3px;
+}
+
+/* Thin scrollbar for Firefox */
+.scrollbar-thin {
+	scrollbar-width: thin;
+	scrollbar-color: var(--border-col) transparent;
+}
+
+/* Hide number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+}
+
+/* ── Base ── */
+*,
+*::before,
+*::after {
+	transition:
+		background-color 200ms ease,
+		border-color 200ms ease,
+		color 200ms ease;
+}
+
+/* Box-sizing reset */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+@layer components {
+	.invoice-card {
+		@apply bg-light-surface shadow-card border border-transparent
+           hover:border-brand-purple transition-colors cursor-pointer;
+	}
+
+	.btn-primary {
+		@apply bg-brand-purple text-sm md:text-lg hover:bg-brand-purple-light text-white
+           font-bold rounded-pill md:px-5 md:py-3 px-3 py-2 transition-colors
+           focus-visible:outline-none focus-visible:ring-2
+           focus-visible:ring-brand-purple focus-visible:ring-offset-2;
+	}
+
+	.btn-danger {
+		@apply bg-brand-red hover:bg-brand-red-light text-white
+           font-bold rounded-pill px-6 py-4 transition-colors;
+	}
+
+	.btn-ghost {
+		@apply bg-light-surface-alt hover:bg-light-border text-light-label hover:text-light-heading
+           font-bold rounded-pill px-6 py-4 transition-colors;
+	}
+
+	.btn-dark {
+		@apply bg-[#373b53] hover:bg-light-heading text-light-body hover:text-[#dfe3fa]
+           font-bold rounded-pill px-6 py-4 transition-colors;
+	}
+
+	.field-input {
+		@apply w-full bg-light-surface-alt border border-light-border rounded-invoice
+           text-light-heading font-bold text-xs px-5 py-4
+           placeholder:text-light-muted
+           focus:outline-none focus:border-brand-purple
+           transition-colors caret-brand-purple;
+	}
+
+	.field-input-error {
+		@apply border-brand-red focus:border-brand-red;
+	}
+
+	.field-label {
+		@apply block text-light-label text-xs font-medium mb-2;
+	}
+
+	.badge-paid {
+		@apply inline-flex items-center gap-2 rounded-badge px-4 py-3
+           font-bold text-xs text-status-paid;
+		background-color: var(--badge-paid-bg);
+	}
+
+	.badge-pending {
+		@apply inline-flex items-center gap-2 rounded-badge px-4 py-3
+           font-bold text-xs text-status-pending;
+		background-color: var(--badge-pending-bg);
+	}
+
+	.badge-draft {
+		@apply inline-flex items-center gap-2 rounded-badge px-4 py-3
+           font-bold text-xs;
+		color: var(--badge-draft-text);
+		background-color: var(--badge-draft-bg);
+	}
+}
