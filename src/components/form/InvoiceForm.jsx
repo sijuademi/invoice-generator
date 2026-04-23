@@ -25,17 +25,6 @@ const SectionTitle = ({ children }) => (
 	</p>
 );
 
-const BackArrow = () => (
-	<svg width="7" height="10" viewBox="0 0 7 10" fill="none" aria-hidden>
-		<path
-			d="M6.342.886L2.114 5.114l4.228 4.228"
-			stroke="#7C5DFA"
-			strokeWidth="2"
-			strokeLinecap="round"
-		/>
-	</svg>
-);
-
 export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 	const isEdit = mode === "edit";
 
@@ -112,13 +101,13 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 					<button
 						type="button"
 						onClick={onClose}
-						className="flex items-center gap-3 text-xs font-bold text-heading hover:text-label transition-colors pb-6 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple rounded"
+						className="flex sm:hidden items-center gap-3 font-bold text-light-heading hover:text-label transition-colors pb-6 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple rounded"
 					>
 						{/* <BackArrow /> */}
-						<ChevronLeft />
+						<ChevronLeft className="text-brand-purple" size={16} />
 						Go back
 					</button>
-					<h2 className="text-2xl font-bold tracking-tight text-heading mb-8">
+					<h2 className="text-2xl font-bold tracking-tight text-light-heading mb-8">
 						{isEdit ? (
 							<>
 								Edit <span className="text-body">#</span>
@@ -131,7 +120,7 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 				</div>
 
 				{/* ── Scrollable body ── */}
-				<div className="flex-1 overflow-y-auto px-6 sm:px-10 pb-4 space-y-10 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent">
+				<div className="flex-1 overflow-y-auto px-6 sm:px-10 space-y-10 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent pb-24 sm:pb-16 lg:pb-32">
 					{/* Bill From */}
 					<section>
 						<SectionTitle>Bill From</SectionTitle>
@@ -146,6 +135,7 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 								label="Client's Name"
 								htmlFor="clientName"
 								error={errors.clientName?.message}
+								className="text-light-label"
 							>
 								<Input
 									id="clientName"
@@ -158,6 +148,7 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 								label="Client's Email"
 								htmlFor="clientEmail"
 								error={errors.clientEmail?.message}
+								className="text-light-label"
 							>
 								<Input
 									id="clientEmail"
@@ -178,15 +169,21 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 								label="Invoice Date"
 								htmlFor="createdAt"
 								error={errors.createdAt?.message}
+								className="text-light-label"
 							>
 								<Input
+									className="text-light-body"
 									id="createdAt"
 									type="date"
 									error={errors.createdAt?.message}
 									{...register("createdAt")}
 								/>
 							</FormField>
-							<FormField label="Payment Terms" htmlFor="paymentTerms">
+							<FormField
+								label="Payment Terms"
+								htmlFor="paymentTerms"
+								className="text-light-label"
+							>
 								<Controller
 									name="paymentTerms"
 									control={control}
@@ -205,6 +202,7 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 							label="Project Description"
 							htmlFor="description"
 							error={errors.description?.message}
+							className="text-light-label"
 						>
 							<Input
 								id="description"

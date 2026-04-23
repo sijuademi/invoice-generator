@@ -22,10 +22,10 @@ function Home({ onSelectInvoice }) {
 	};
 
 	const count = invoices.length;
-	const subtitle =
-		filter.length > 0
-			? `${count} ${filter.join(" & ")} invoice${count !== 1 ? "s" : ""}`
-			: `${count} invoice${count !== 1 ? "s" : ""}`;
+	// const subtitle =
+	// 	filter.length > 0
+	// 		? `${count} ${filter.join(" & ")} invoice${count !== 1 ? "s" : ""}`
+	// 		: `${count} invoice${count !== 1 ? "s" : ""}`;
 	return (
 		<>
 			<div className=" px-6 md:px-12  lg:ps-30 lg:pe-40 lg:px-0 xl:ps-63 xl:pe-88">

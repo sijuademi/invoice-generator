@@ -2,7 +2,7 @@ import ThemeToggle from "./ThemeToggle";
 
 function Sidebar() {
 	return (
-		<div className="bg-brand-sidebar lg:h-screen lg:rounded-r-3xl lg:flex lg:flex-col lg:items-center grid grid-cols-[4.5rem_auto_5rem] ">
+		<div className="bg-brand-sidebar lg:min-h-screen lg:rounded-r-3xl lg:flex lg:flex-col lg:items-center grid grid-cols-[4.5rem_auto_5rem] ">
 			<div className="bg-brand-purple lg:w-full lg:h-26 md:h-20 h-18 rounded-r-3xl flex flex-col justify-end">
 				<div className="bg-brand-purple-light w-full lg:h-13 h-9 md:h-9 flex justify-center rounded-tl-3xl relative">
 					<div

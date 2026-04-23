@@ -3,19 +3,19 @@ import { cn } from "../../lib/utils";
 const DOT_COLORS = {
 	paid: "bg-status-paid",
 	pending: "bg-status-pending",
-	draft: "bg-status-draft",
+	draft: "bg-status-draft dark:bg-white",
 };
 
 const BADGE_CLASSES = {
 	paid: "badge-paid",
 	pending: "badge-pending",
-	draft: "badge-draft",
+	draft: "badge-draft dark:text-white",
 };
 
 const BACKGROUND_CLASSES = {
-	paid: "bg-green-50",
-	pending: "bg-orange-50",
-	draft: "bg-gray-50",
+	paid: "bg-[rgba(51,214,159,0.06)]",
+	pending: "bg-[rgba(255,143,0,0.06)]",
+	draft: "bg-[rgba(223,227,250,0.06)]",
 };
 
 export default function Badge({ status, className }) {
@@ -24,7 +24,7 @@ export default function Badge({ status, className }) {
 			className={cn(
 				BADGE_CLASSES[status],
 				BACKGROUND_CLASSES[status],
-				"min-w-26 justify-center",
+				"min-w-26 justify-center change",
 				className,
 			)}
 		>

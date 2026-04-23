@@ -41,7 +41,7 @@ function PageTransition({ children, pageKey }) {
 			animate={{ opacity: 1, x: 0 }}
 			exit={{ opacity: 0, x: -20 }}
 			transition={{ duration: 0.22, ease: [0.4, 0, 0.2, 1] }}
-			className="min-h-full"
+			className="min-h-screen"
 		>
 			{children}
 		</motion.div>

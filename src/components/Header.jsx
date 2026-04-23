@@ -23,7 +23,7 @@ function Header({ setDrawerOpen }) {
 				<Button
 					onClick={() => setDrawerOpen(true)}
 					className="bg-brand-purple flex gap-2 md:gap-3 items-center"
-					type="btn-primary"
+					// type="btn-primary"
 				>
 					<Plus className="h-4 w-4 md:h-6 md:w-6 bg-white rounded-full text-brand-purple" />{" "}
 					<div className="pt-1 text-white">

@@ -101,25 +101,25 @@ input[type="number"]::-webkit-outer-spin-button {
 	}
 
 	.btn-primary {
-		@apply bg-brand-purple text-sm md:text-lg hover:bg-brand-purple-light text-white
-           font-bold rounded-pill md:px-6 md:py-4 px-3 py-2 transition-colors
+		@apply bg-brand-purple md:text-lg hover:bg-brand-purple-light text-white
+           font-bold rounded-pill md:px-6 md:py-3 px-3 py-2 transition-colors
            focus-visible:outline-none focus-visible:ring-2
            focus-visible:ring-brand-purple focus-visible:ring-offset-2;
 	}
 
 	.btn-danger {
 		@apply bg-brand-red hover:bg-brand-red-light text-white
-           font-bold rounded-pill px-6 py-4 transition-colors;
+           font-bold rounded-pill px-6 py-3 transition-colors;
 	}
 
 	.btn-ghost {
 		@apply bg-light-surface-alt hover:bg-light-border text-light-label hover:text-light-heading
-           font-bold rounded-pill px-6 py-4 transition-colors;
+           font-bold rounded-pill px-6 py-3 transition-colors;
 	}
 
 	.btn-dark {
 		@apply bg-[#373b53] hover:bg-light-heading text-light-body hover:text-[#dfe3fa]
-           font-bold rounded-pill px-6 py-4 transition-colors;
+           font-bold rounded-pill px-6 py-3 transition-colors;
 	}
 
 	.field-input {
@@ -155,5 +155,8 @@ input[type="number"]::-webkit-outer-spin-button {
            font-bold text-xs;
 		color: var(--badge-draft-text);
 		background-color: var(--badge-draft-bg);
+	}
+	.change {
+		@apply transition-colors duration-150;
 	}
 }

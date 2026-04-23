@@ -17,7 +17,7 @@ export const themes = {
 		border: "#252945",
 		heading: "#FFFFFF",
 		body: "#DFE3FA",
-		label: "#888EB0",
+		label: "#DFE3FA",
 		muted: "#494E6E",
 		overlay: "rgba(0,0,0,0.70)",
 	},
