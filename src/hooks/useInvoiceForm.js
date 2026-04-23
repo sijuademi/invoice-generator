@@ -1,7 +1,3 @@
-// hooks/useInvoiceForm.js
-// Problem: form state, validation logic, and item mutations are entangled with render code.
-// Solution: extract everything into one hook; components only call what they need.
-
 import { useState, useCallback } from "react";
 import { emptyItem } from "../constants/invoiceDefaults";
 
@@ -63,7 +59,7 @@ export function useInvoiceForm(initialData, { onSave, onDraft, onClose }) {
 		if (Object.keys(e).length === 0) onSave(form);
 	};
 
-	const handleDraft = () => onDraft(form); // drafts bypass validation
+	const handleDraft = () => onDraft(form);
 	const handleClose = () => onClose();
 
 	return {

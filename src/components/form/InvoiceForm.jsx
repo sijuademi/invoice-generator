@@ -75,16 +75,29 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 		reset(defaultValues);
 	}, [invoice?.id]);
 
-	// ── Save & Send (full validation) ─────────────────────────────────────────
+	
+	useEffect(() => {
+		const handleKeyDown = (e) => {
+			if (e.key === "Escape") {
+				e.preventDefault();
+				onClose();
+			}
+		};
+
+		window.addEventListener("keydown", handleKeyDown);
+		return () => window.removeEventListener("keydown", handleKeyDown);
+	}, [onClose]);
+
+	
 	const handleSend = handleSubmit((data) => onSave(data, "pending"));
 
-	// ── Save as Draft (no validation) ────────────────────────────────────────
+	
 	const handleSaveDraft = () => {
 		const raw = methods.getValues();
 		onDraft(raw);
 	};
 
-	// Top-level validation errors (shown at footer)
+	
 	const hasErrors = Object.keys(errors).length > 0;
 
 	return (

@@ -133,8 +133,8 @@ export function InvoiceProvider({ children }) {
 	return (
 		<InvoiceContext.Provider
 			value={{
-				invoices, // always the (filtered) list pages should render
-				allInvoices, // unfiltered – useful for counts / "all X invoices"
+				invoices,
+				allInvoices,
 				filter,
 				setFilter,
 				getInvoice,

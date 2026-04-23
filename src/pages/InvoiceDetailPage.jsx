@@ -20,7 +20,6 @@ function AddressBlock({ address }) {
 	);
 }
 
-// ── Meta cell ─────────────────────────────────────────────────────────────────
 function MetaCell({ label, value, className }) {
 	return (
 		<div className={className}>
@@ -30,13 +29,10 @@ function MetaCell({ label, value, className }) {
 	);
 }
 
-// ── Items table ───────────────────────────────────────────────────────────────
 function ItemsTable({ items, total }) {
 	return (
 		<div className="rounded-[8px] overflow-hidden mt-10">
-			{/* Table body — light purple bg */}
 			<div className="bg-light-surface-alt p-6 sm:p-8">
-				{/* Header row — desktop only */}
 				<div className="hidden sm:grid grid-cols-[1fr_64px_120px_120px] gap-4 mb-6">
 					{["Item Name", "QTY.", "Price", "Total"].map((h, i) => (
 						<span
@@ -93,7 +89,6 @@ function ItemsTable({ items, total }) {
 	);
 }
 
-// ── Desktop action buttons (inline in status bar) ────────────────────────────
 function DesktopActions({ invoice, onEdit, onDelete, onMarkPaid }) {
 	const isPaid = invoice.status === "paid";
 	const isPending = invoice.status === "pending";
@@ -116,7 +111,6 @@ function DesktopActions({ invoice, onEdit, onDelete, onMarkPaid }) {
 	);
 }
 
-// ── Mobile action bar (fixed bottom) ─────────────────────────────────────────
 function MobileActionBar({ invoice, onEdit, onDelete, onMarkPaid }) {
 	const isPaid = invoice.status === "paid";
 	const isPending = invoice.status === "pending";
@@ -152,7 +146,6 @@ function MobileActionBar({ invoice, onEdit, onDelete, onMarkPaid }) {
 	);
 }
 
-// ── Main page ─────────────────────────────────────────────────────────────────
 export default function InvoiceDetailPage({ invoiceId, onBack }) {
 	const { getInvoice, updateInvoice, deleteInvoice, markAsPaid } =
 		useInvoices();
@@ -180,7 +173,6 @@ export default function InvoiceDetailPage({ invoiceId, onBack }) {
 		setEditOpen(false);
 	};
 
-	// Draft passed through edit uses draft (same handler, status moves to pending)
 	const handleDraft = (data) => {
 		updateInvoice(invoiceId, data);
 		setEditOpen(false);
@@ -193,9 +185,8 @@ export default function InvoiceDetailPage({ invoiceId, onBack }) {
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.25 }}
 				className="max-w-182.5 mx-auto px-6 py-8 sm:py-14
-                   pb-32 lg:pb-14 mb-20" /* space for mobile action bar */
+                   pb-32 lg:pb-14 mb-20"
 			>
-				{/* ── Go back ── */}
 				<button
 					type="button"
 					onClick={onBack}
@@ -203,7 +194,6 @@ export default function InvoiceDetailPage({ invoiceId, onBack }) {
                      transition-colors mb-8 cursor-pointer
                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple rounded"
 				>
-					{/* <BackArrow /> */}
 					<ChevronLeft className="text-brand-purple" />
 					Go back
 				</button>
@@ -271,12 +261,10 @@ export default function InvoiceDetailPage({ invoiceId, onBack }) {
 						</div>
 					</dl>
 
-					{/* Items table */}
 					<ItemsTable items={invoice.items} total={invoice.total} />
 				</div>
 			</motion.div>
 
-			{/* ── Mobile action bar (fixed bottom) ── */}
 			<MobileActionBar
 				invoice={invoice}
 				onEdit={() => setEditOpen(true)}
@@ -284,7 +272,6 @@ export default function InvoiceDetailPage({ invoiceId, onBack }) {
 				onMarkPaid={() => markAsPaid(invoiceId)}
 			/>
 
-			{/* ── Edit drawer ── */}
 			<InvoiceDrawer
 				open={editOpen}
 				mode="edit"
@@ -294,7 +281,6 @@ export default function InvoiceDetailPage({ invoiceId, onBack }) {
 				onDraft={handleDraft}
 			/>
 
-			{/* ── Delete confirmation modal ── */}
 			<DeleteModal
 				invoiceId={invoice.id}
 				open={deleteOpen}

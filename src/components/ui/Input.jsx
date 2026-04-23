@@ -2,7 +2,6 @@ import { forwardRef } from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { cn } from "../../lib/utils";
 
-// ── Label ─────────────────────────────────────────────────────────────────────
 export function FieldLabel({
 	className,
 	error,
@@ -31,7 +30,6 @@ export function FieldLabel({
 	);
 }
 
-// ── Input ─────────────────────────────────────────────────────────────────────
 export const Input = forwardRef(function Input(
 	{ className, error, ...props },
 	ref,
@@ -53,7 +51,6 @@ export const Input = forwardRef(function Input(
 	);
 });
 
-// ── FormField: label + input stacked ─────────────────────────────────────────
 export function FormField({ label, error, htmlFor, children, className }) {
 	return (
 		<div className={cn("flex flex-col", className)}>

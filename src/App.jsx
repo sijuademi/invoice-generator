@@ -1,29 +1,3 @@
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import Home from "./pages/Home";
-// import InvoiceDetailPage from "./pages/InvoiceDetailPage";
-// import AppLayout from "./AppLayout";
-
-// const router = createBrowserRouter([
-// 	{
-// 		path: "/",
-// 		element: <AppLayout />,
-// 		children: [
-// 			{ path: "/home", element: <Home /> },
-// 			{ path: "/details", element: <InvoiceDetailPage /> },
-// 		],
-// 	},
-// ]);
-
-// function App() {
-// 	return (
-// 		<div>
-// 			<RouterProvider router={router} />
-// 		</div>
-// 	);
-// }
-
-// export default App;
-
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ThemeProvider } from "./contextapi/ThemeContext";
@@ -32,7 +6,6 @@ import AppLayout from "./AppLayout";
 import Home from "./pages/Home";
 import InvoiceDetailPage from "./pages/InvoiceDetailPage";
 
-// ── Page transition wrapper ───────────────────────────────────────────────────
 function PageTransition({ children, pageKey }) {
 	return (
 		<motion.div
@@ -48,7 +21,6 @@ function PageTransition({ children, pageKey }) {
 	);
 }
 
-// ── Router — simple state machine (no external router needed) ────────────────
 function Router() {
 	const [selectedId, setSelectedId] = useState(null);
 
@@ -70,7 +42,6 @@ function Router() {
 	);
 }
 
-// ── Root ─────────────────────────────────────────────────────────────────────
 export default function App() {
 	return (
 		<ThemeProvider>

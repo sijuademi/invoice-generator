@@ -1,8 +1,3 @@
-// components/form/AddressFields.jsx
-// Problem: the exact same four-field address layout (street, then city/postcode/country
-//          in a row) is needed for both "Bill From" and "Bill To".
-// Solution: accept a field-name prefix and render once, using react-hook-form context.
-
 import { useFormContext, Controller } from "react-hook-form";
 import { useTheme } from "../../contextapi/ThemeContext";
 import { themes } from "../../constants/theme";
@@ -16,12 +11,10 @@ export function AddressFields({ prefix }) {
 	const { isDark } = useTheme();
 	const t = isDark ? themes.dark : themes.light;
 
-	// Field names for nested address object (e.g., "senderAddress.street")
 	const fieldName = (key) => `${prefix}.${key}`;
 
 	return (
 		<div>
-			{/* Street — full width */}
 			<div style={{ marginBottom: 20 }}>
 				<Controller
 					name={fieldName("street")}
@@ -39,7 +32,6 @@ export function AddressFields({ prefix }) {
 				/>
 			</div>
 
-			{/* City / Post Code / Country — three columns */}
 			<div style={{ display: "flex", gap: 16 }}>
 				<div style={{ flex: 1 }}>
 					<Controller

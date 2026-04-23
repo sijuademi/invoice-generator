@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom";
 import Sidebar from "./components/ui/Sidebar";
 
 function AppLayout({ children }) {

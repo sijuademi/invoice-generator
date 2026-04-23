@@ -1,7 +1,3 @@
-// invoiceDefaults.js
-// Problem: default / seed data is scattered and recreated inline wherever needed.
-// Solution: one place to define the empty state and the edit seed.
-
 const uid = () =>
 	Math.random().toString(36).slice(2, 4).toUpperCase() +
 	Math.floor(1000 + Math.random() * 9000);
