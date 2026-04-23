@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import Badge from "./ui/Badge";
-import { formatDate, formatCurrency } from "../lib/utils";
+import Badge from "../ui/Badge";
+import { formatDate, formatCurrency } from "../../lib/utils";
 import { ChevronRight } from "lucide-react";
-import Button from "./ui/Button";
+import Button from "../ui/Button";
 
 export default function InvoiceSummary({ invoice, index, onClick }) {
 	return (

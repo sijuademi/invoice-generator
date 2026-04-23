@@ -6,18 +6,19 @@ import Button from "../components/ui/Button";
 import { DeleteModal } from "../components/ui/DeleteModal";
 import { InvoiceDrawer } from "../components/form/InvoiceDrawer";
 import { formatCurrency, formatDate, cn } from "../lib/utils";
+import { ChevronLeft } from "lucide-react";
 
 // ── Back arrow ────────────────────────────────────────────────────────────────
-const BackArrow = () => (
-	<svg width="7" height="10" viewBox="0 0 7 10" fill="none" aria-hidden>
-		<path
-			d="M6.342.886L2.114 5.114l4.228 4.228"
-			stroke="#7C5DFA"
-			strokeWidth="2"
-			strokeLinecap="round"
-		/>
-	</svg>
-);
+// const BackArrow = () => (
+// 	<svg width="7" height="10" viewBox="0 0 7 10" fill="none" aria-hidden>
+// 		<path
+// 			d="M6.342.886L2.114 5.114l4.228 4.228"
+// 			stroke="#7C5DFA"
+// 			strokeWidth="2"
+// 			strokeLinecap="round"
+// 		/>
+// 	</svg>
+// );
 
 // ── Address block ─────────────────────────────────────────────────────────────
 function AddressBlock({ address }) {
@@ -137,7 +138,7 @@ function MobileActionBar({ invoice, onEdit, onDelete, onMarkPaid }) {
 			className="
         lg:hidden fixed bottom-0 left-0 right-0 z-20
         flex items-center gap-2 px-6 py-5
-        bg-surface border-t border-border
+        bg-light-surface
         shadow-[0_-4px_16px_rgba(0,0,0,0.08)]
       "
 		>
@@ -150,7 +151,11 @@ function MobileActionBar({ invoice, onEdit, onDelete, onMarkPaid }) {
 				Delete
 			</Button>
 			{isPending && (
-				<Button variant="primary" onClick={onMarkPaid} className="ml-auto">
+				<Button
+					variant="primary"
+					onClick={onMarkPaid}
+					className="ml-auto px-6 py-4"
+				>
 					Mark as Paid
 				</Button>
 			)}
@@ -169,7 +174,7 @@ export default function InvoiceDetailPage({ invoiceId, onBack }) {
 
 	if (!invoice) {
 		return (
-			<div className="max-w-[730px] mx-auto px-6 py-14 text-center text-body">
+			<div className="max-w-182.5 mx-auto px-6 py-14 text-center text-body">
 				Invoice not found.
 			</div>
 		);
@@ -198,8 +203,8 @@ export default function InvoiceDetailPage({ invoiceId, onBack }) {
 				initial={{ opacity: 0, y: 12 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.25 }}
-				className="max-w-[730px] mx-auto px-6 py-8 sm:py-14
-                   pb-32 lg:pb-14" /* space for mobile action bar */
+				className="max-w-182.5 mx-auto px-6 py-8 sm:py-14
+                   pb-32 lg:pb-14 mb-20" /* space for mobile action bar */
 			>
 				{/* ── Go back ── */}
 				<button
@@ -208,7 +213,8 @@ export default function InvoiceDetailPage({ invoiceId, onBack }) {
                      transition-colors mb-8 cursor-pointer
                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple rounded"
 				>
-					<BackArrow />
+					{/* <BackArrow /> */}
+					<ChevronLeft />
 					Go back
 				</button>
 

@@ -23,7 +23,7 @@ function Sidebar() {
 				</div>
 			</div>
 
-			<div className="lg:border-t-2 border-l-2  border-light-muted w-full flex justify-center items-center lg:py-6">
+			<div className="lg:border-t border-l  border-light-muted w-full flex justify-center items-center lg:py-6">
 				<img src="Oval.png" alt="Avatar" className="h-10 w-10" />
 			</div>
 		</div>

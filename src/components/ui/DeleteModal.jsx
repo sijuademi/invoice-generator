@@ -23,20 +23,19 @@ export function DeleteModal({ invoiceId, open, onOpenChange, onConfirm }) {
 							<motion.div
 								role="alertdialog"
 								aria-modal="true"
-								className="fixed z-50 top-1/2 left-1/2 w-[calc(100%-48px)] max-w-[480px]
-                           bg-surface rounded-invoice p-12 shadow-xl
+								className="fixed z-50 top-1/2 left-1/2 w-[calc(100%-48px)] max-w-120
+                           bg-light-surface rounded-invoice p-12 shadow-xl
                            focus:outline-none"
 								initial={{ opacity: 0, scale: 0.95, x: "-50%", y: "-50%" }}
 								animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
 								exit={{ opacity: 0, scale: 0.95, x: "-50%", y: "-50%" }}
 								transition={{ duration: 0.2 }}
 							>
-								<Dialog.Title className="text-2xl font-bold text-heading mb-3">
+								<Dialog.Title className="text-2xl font-bold text-light-heading mb-3">
 									Confirm Deletion
 								</Dialog.Title>
-								<Dialog.Description className="text-body text-sm leading-relaxed mb-8">
-									Are you sure you want to delete invoice{" "}
-									<strong className="text-heading">#{invoiceId}</strong>? This
+								<Dialog.Description className="text-modal text-sm leading-relaxed mb-8">
+									Are you sure you want to delete invoice #{invoiceId}? This
 									action cannot be undone.
 								</Dialog.Description>
 

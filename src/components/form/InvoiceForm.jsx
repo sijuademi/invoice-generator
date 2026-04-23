@@ -10,6 +10,7 @@ import Button from "../ui/Button";
 import { AddressFields } from "./AddressFields";
 import { ItemList } from "./ItemList";
 import { cn } from "../../lib/utils";
+import { ChevronLeft } from "lucide-react";
 
 const PAYMENT_TERMS = [
 	{ value: "1", label: "Net 1 Day" },
@@ -102,18 +103,19 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 			<form
 				noValidate
 				onSubmit={handleSend}
-				className="flex flex-col h-full bg-surface overflow-hidden"
+				className="flex flex-col h-full bg-light-surface overflow-hidden"
 				style={{ borderRadius: "0 20px 20px 0" }}
 				aria-label={isEdit ? "Edit invoice form" : "New invoice form"}
 			>
 				{/* ── Header ── */}
-				<div className="px-6 sm:px-10 pt-8 flex-shrink-0">
+				<div className="px-6 sm:px-10 pt-8 shrink-0">
 					<button
 						type="button"
 						onClick={onClose}
 						className="flex items-center gap-3 text-xs font-bold text-heading hover:text-label transition-colors pb-6 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple rounded"
 					>
-						<BackArrow />
+						{/* <BackArrow /> */}
+						<ChevronLeft />
 						Go back
 					</button>
 					<h2 className="text-2xl font-bold tracking-tight text-heading mb-8">
@@ -220,12 +222,12 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 				{/* ── Footer ── */}
 				<div
 					className={cn(
-						"flex-shrink-0 px-6 sm:px-10 py-5",
-						"bg-surface border-t border-border",
+						"shrink-0 px-6 sm:px-10 py-5 fixed bottom-0",
+						"bg-light-surface w-full sm:max-w-154",
 						"shadow-[0_-8px_24px_rgba(72,84,159,0.06)]",
 						isEdit
 							? "flex justify-end gap-2"
-							: "flex justify-between items-center gap-2",
+							: "flex justify-between items-center",
 					)}
 				>
 					{/* Validation summary */}
@@ -254,14 +256,12 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 							<Button type="button" variant="ghost" onClick={onClose}>
 								Discard
 							</Button>
-							<div className="flex gap-2">
+							<div className="flex gap-4">
 								<Button type="button" variant="dark" onClick={handleSaveDraft}>
-									<span className="hidden sm:inline">Save as Draft</span>
-									<span className="sm:hidden">Draft</span>
+									<span className="">Save as Draft</span>
 								</Button>
 								<Button type="submit">
-									<span className="hidden sm:inline">Save &amp; Send</span>
-									<span className="sm:hidden">Send</span>
+									<span className="">Save &amp; Send</span>
 								</Button>
 							</div>
 						</>
