@@ -131,8 +131,8 @@ function MobileActionBar({ invoice, onEdit, onDelete, onMarkPaid }) {
 			<Button variant="danger" onClick={onDelete}>
 				Delete
 			</Button>
-			<div>
-				{isPending && (
+			{isPending && (
+				<div>
 					<Button
 						variant="primary"
 						onClick={onMarkPaid}
@@ -140,8 +140,8 @@ function MobileActionBar({ invoice, onEdit, onDelete, onMarkPaid }) {
 					>
 						Mark as Paid
 					</Button>
-				)}
-			</div>
+				</div>
+			)}
 		</div>
 	);
 }

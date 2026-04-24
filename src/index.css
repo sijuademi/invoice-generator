@@ -106,17 +106,20 @@ input[type="number"]::-webkit-outer-spin-button {
 
 	.btn-danger {
 		@apply bg-brand-red hover:bg-brand-red-light text-white
-           font-bold rounded-pill px-6 py-3 transition-colors;
+           font-bold rounded-pill px-6 py-3 transition-colors  focus-visible:outline-none focus-visible:ring-2
+           focus-visible:ring-brand-red focus-visible:ring-offset-2;
 	}
 
 	.btn-ghost {
 		@apply bg-light-surface-alt hover:bg-light-border text-light-label hover:text-light-heading
-           font-bold rounded-pill px-6 py-3 transition-colors;
+           font-bold rounded-pill px-6 py-3 transition-colors  focus-visible:outline-none focus-visible:ring-2
+           focus-visible:ring-light-heading focus-visible:ring-offset-2;
 	}
 
 	.btn-dark {
 		@apply bg-[#373b53] hover:bg-light-heading text-light-body hover:text-[#dfe3fa]
-           font-bold rounded-pill px-6 py-3 transition-colors;
+           font-bold rounded-pill px-6 py-3 transition-colors  focus-visible:outline-none focus-visible:ring-2
+           focus-visible:ring-[#373b53] focus-visible:ring-offset-2;
 	}
 
 	.field-input {

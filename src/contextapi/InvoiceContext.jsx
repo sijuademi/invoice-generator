@@ -36,26 +36,22 @@ function normaliseItems(items = []) {
 
 export function InvoiceProvider({ children }) {
 	const [allInvoices, setAllInvoices] = useState(loadInvoices);
-	const [filter, setFilter] = useState([]); // [] = show all
+	const [filter, setFilter] = useState([]);
 
-	// Persist every time allInvoices changes
 	useEffect(() => {
 		saveInvoices(allInvoices);
 	}, [allInvoices]);
 
-	// Public filtered list – this is what pages consume as "invoices"
 	const invoices =
 		filter.length === 0
 			? allInvoices
 			: allInvoices.filter((inv) => filter.includes(inv.status));
 
-	// ── Read ────────────────────────────────────────────────────────────────────
 	const getInvoice = useCallback(
 		(id) => allInvoices.find((inv) => inv.id === id) ?? null,
 		[allInvoices],
 	);
 
-	// ── Create ──────────────────────────────────────────────────────────────────
 	const createInvoice = useCallback((formData, status = "pending") => {
 		const items = normaliseItems(formData.items);
 		const createdAt =
@@ -89,8 +85,6 @@ export function InvoiceProvider({ children }) {
 		return invoice;
 	}, []);
 
-	// ── Update ──────────────────────────────────────────────────────────────────
-	// Drafts automatically move to "pending" on save; paid invoices stay paid.
 	const updateInvoice = useCallback((id, formData) => {
 		setAllInvoices((prev) =>
 			prev.map((inv) => {
@@ -114,12 +108,10 @@ export function InvoiceProvider({ children }) {
 		);
 	}, []);
 
-	// ── Delete ──────────────────────────────────────────────────────────────────
 	const deleteInvoice = useCallback((id) => {
 		setAllInvoices((prev) => prev.filter((inv) => inv.id !== id));
 	}, []);
 
-	// ── Mark as Paid ────────────────────────────────────────────────────────────
 	const markAsPaid = useCallback((id) => {
 		setAllInvoices((prev) =>
 			prev.map((inv) =>

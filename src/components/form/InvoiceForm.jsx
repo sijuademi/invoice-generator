@@ -12,6 +12,10 @@ import { ItemList } from "./ItemList";
 import { cn } from "../../lib/utils";
 import { ChevronLeft } from "lucide-react";
 
+const blockDigits = (e) => {
+	if (/\d/.test(e.key) && !e.ctrlKey && !e.metaKey) e.preventDefault();
+};
+
 const PAYMENT_TERMS = [
 	{ value: "1", label: "Net 1 Day" },
 	{ value: "7", label: "Net 7 Days" },
@@ -75,7 +79,6 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 		reset(defaultValues);
 	}, [invoice?.id]);
 
-	
 	useEffect(() => {
 		const handleKeyDown = (e) => {
 			if (e.key === "Escape") {
@@ -88,16 +91,13 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 		return () => window.removeEventListener("keydown", handleKeyDown);
 	}, [onClose]);
 
-	
 	const handleSend = handleSubmit((data) => onSave(data, "pending"));
 
-	
 	const handleSaveDraft = () => {
 		const raw = methods.getValues();
 		onDraft(raw);
 	};
 
-	
 	const hasErrors = Object.keys(errors).length > 0;
 
 	return (
@@ -154,6 +154,7 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 									id="clientName"
 									placeholder="e.g. Alex Grim"
 									error={errors.clientName?.message}
+									onKeyDown={blockDigits}
 									{...register("clientName")}
 								/>
 							</FormField>
