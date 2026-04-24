@@ -109,7 +109,6 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 				style={{ borderRadius: "0 20px 20px 0" }}
 				aria-label={isEdit ? "Edit invoice form" : "New invoice form"}
 			>
-				{/* ── Header ── */}
 				<div className="px-6 sm:px-10 pt-8 shrink-0">
 					<button
 						type="button"
@@ -132,15 +131,12 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 					</h2>
 				</div>
 
-				{/* ── Scrollable body ── */}
 				<div className="flex-1 overflow-y-auto px-6 sm:px-10 space-y-10 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent pb-24 sm:pb-16 lg:pb-32">
-					{/* Bill From */}
 					<section>
 						<SectionTitle>Bill From</SectionTitle>
 						<AddressFields prefix="senderAddress" />
 					</section>
 
-					{/* Bill To */}
 					<section>
 						<SectionTitle>Bill To</SectionTitle>
 						<div className="flex flex-col gap-5">
@@ -227,11 +223,9 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 						</FormField>
 					</section>
 
-					{/* Items */}
 					<ItemList />
 				</div>
 
-				{/* ── Footer ── */}
 				<div
 					className={cn(
 						"shrink-0 px-6 sm:px-10 py-5 fixed bottom-0",
@@ -242,7 +236,6 @@ export function InvoiceForm({ mode, invoice, onClose, onSave, onDraft }) {
 							: "flex justify-between items-center",
 					)}
 				>
-					{/* Validation summary */}
 					<AnimatePresence>
 						{hasErrors && (
 							<motion.p

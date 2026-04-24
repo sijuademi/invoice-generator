@@ -1,10 +1,8 @@
 import { z } from "zod";
 
-// Reusable refinement — rejects strings that contain any digit
 const noDigits = (msg = "no numbers allowed") =>
 	z.string().refine((val) => !/\d/.test(val), { message: msg });
 
-// Text-only field: non-empty + no digits
 const textField = (emptyMsg = "can't be empty") =>
 	z
 		.string()
@@ -12,24 +10,23 @@ const textField = (emptyMsg = "can't be empty") =>
 		.refine((val) => !/\d/.test(val), { message: "no numbers allowed" });
 
 const addressSchema = z.object({
-	street: z.string().min(1, "can't be empty"), // streets can have numbers
+	street: z.string().min(1, "can't be empty"),
 	city: textField(),
-	postCode: z.string().min(1, "can't be empty"), // postcodes need numbers
+	postCode: z.string().min(1, "can't be empty"),
 	country: textField(),
 });
 
 export const itemSchema = z.object({
 	id: z.string().optional(),
-	name: textField(), // item names: no digits
+	name: textField(),
 	quantity: z.coerce.number().min(1, "min 1"),
 	price: z.coerce.number().min(0, "min 0"),
 	total: z.coerce.number().optional(),
 });
 
-// Full validation (Save & Send / Save Changes)
 export const invoiceSchema = z.object({
 	senderAddress: addressSchema,
-	clientName: textField(), // client name: no digits
+	clientName: textField(),
 	clientEmail: z.string().email("invalid email"),
 	clientAddress: addressSchema,
 	createdAt: z.string().min(1, "can't be empty"),
@@ -38,7 +35,6 @@ export const invoiceSchema = z.object({
 	items: z.array(itemSchema).min(1, "An item must be added"),
 });
 
-// Draft validation — all fields optional
 export const draftSchema = invoiceSchema.partial();
 
 export const defaultValues = {

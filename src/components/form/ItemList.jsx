@@ -3,7 +3,6 @@ import { Input } from "../ui/Input";
 import { cn } from "../../lib/utils";
 import { Trash } from "lucide-react";
 
-// Prevent digit keypresses on name-type fields
 const blockDigits = (e) => {
 	if (/\d/.test(e.key) && !e.ctrlKey && !e.metaKey) e.preventDefault();
 };
@@ -42,7 +41,6 @@ export function ItemList() {
 		<section>
 			<h3 className="text-[18px] font-bold text-[#777F98] mb-5">Item List</h3>
 
-			{/* Desktop column headers */}
 			{fields.length > 0 && (
 				<div className="hidden sm:grid sm:grid-cols-[1fr_64px_120px_80px_32px] gap-4 mb-3">
 					{["Item Name", "Qty.", "Price", "Total", ""].map((h, i) => (
@@ -59,9 +57,6 @@ export function ItemList() {
 
 					return (
 						<div key={field.id}>
-							{/*
-               
-              */}
 							<div
 								className={cn(
 									"grid gap-x-4 gap-y-3",
@@ -75,7 +70,6 @@ export function ItemList() {
 									"sm:items-end",
 								)}
 							>
-								{/* ── Name ── */}
 								<div className="[grid-area:name]">
 									<label
 										htmlFor={`items.${idx}.name`}
@@ -92,7 +86,6 @@ export function ItemList() {
 									/>
 								</div>
 
-								{/* ── Qty ── */}
 								<div className="[grid-area:qty]">
 									<label
 										htmlFor={`items.${idx}.quantity`}
@@ -110,7 +103,6 @@ export function ItemList() {
 									/>
 								</div>
 
-								{/* ── Price — one instance, visible on both breakpoints ── */}
 								<div className="[grid-area:price]">
 									<label
 										htmlFor={`items.${idx}.price`}
@@ -127,7 +119,6 @@ export function ItemList() {
 									/>
 								</div>
 
-								{/* ── Total (read-only) ── */}
 								<div className="[grid-area:total] flex flex-col justify-end">
 									<span className="sm:hidden text-xs text-light-label font-medium mb-1.5">
 										Total
@@ -137,7 +128,6 @@ export function ItemList() {
 									</span>
 								</div>
 
-								{/* ── Delete — spans both mobile rows so it stays vertically centred ── */}
 								<button
 									type="button"
 									aria-label={`Remove item ${idx + 1}`}
@@ -154,7 +144,6 @@ export function ItemList() {
 								</button>
 							</div>
 
-							{/* Per-field validation errors */}
 							{(iErr?.name || iErr?.quantity || iErr?.price) && (
 								<ul className="mt-2 space-y-0.5">
 									{iErr?.name?.message && (
@@ -179,7 +168,6 @@ export function ItemList() {
 				})}
 			</div>
 
-			{/* Add New Item */}
 			<button
 				type="button"
 				onClick={() =>
@@ -196,7 +184,6 @@ export function ItemList() {
 				+ Add New Item
 			</button>
 
-			{/* Array-level error (e.g. "An item must be added") */}
 			{typeof itemErrors?.message === "string" && (
 				<p className="mt-3 text-[10px] font-semibold italic text-brand-red">
 					— {itemErrors.message}
